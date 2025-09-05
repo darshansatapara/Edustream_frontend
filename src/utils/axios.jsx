@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://edusteam-backend.vercel.app/",
+  baseURL: "https://edusteam-backend.vercel.app/api",
 });
 
 // Attach JWT automatically
