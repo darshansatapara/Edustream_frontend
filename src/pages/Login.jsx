@@ -191,7 +191,7 @@ const Login = () => {
               <p className="text-gray-600 text-sm">
                 Don't have an account?{" "}
                 <span
-                  onClick={() => navigate("/register")}
+                  onClick={() => navigate("/signup")}
                   className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text font-semibold cursor-pointer hover:from-blue-700 hover:to-purple-700 transition-all duration-200 hover:underline"
                 >
                   Create Account

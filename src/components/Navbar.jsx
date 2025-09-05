@@ -16,30 +16,43 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md">
+    <nav className="bg-white dark:bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Brand */}
-          <div className="flex-shrink-0 text-white dark:text-white font-bold text-xl">
+          <Link
+            to="/home"
+            className="text-indigo-600 dark:text-white font-bold text-xl"
+          >
             EduStream
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           {user && (
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/home" className="text-white dark:text-white">
+              <Link
+                to="/home"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Home
               </Link>
-              <Link to="/courses" className="text-white dark:text-white">
+              <Link
+                to="/courses"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Courses
               </Link>
-              <Link to="/quizzes" className="text-white dark:text-white">
+              <Link
+                to="/quizzes"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Quizzes
               </Link>
-
-              {/* Cart */}
-              <Link to="/cart" className="relative flex items-center">
-                <ShoppingCart className="w-5 h-5 text-white" />
+              <Link
+                to="/cart"
+                className="relative flex items-center hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
+                <ShoppingCart className="w-5 h-5" />
                 {cart?.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
                     {cart.length}
@@ -49,7 +62,7 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Auth Buttons */}
+          {/* Auth Buttons (Desktop) */}
           <div className="hidden md:flex">
             {user ? (
               <button
@@ -85,51 +98,48 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Dropdown */}
-      {isOpen && user && (
-        <div className="md:hidden bg-white dark:bg-gray-800 px-4 pb-3 space-y-2">
-          <Link
-            to="/home"
-            className="block py-2 border-b hover:text-indigo-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            to="/courses"
-            className="block py-2 border-b hover:text-indigo-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Courses
-          </Link>
-          <Link
-            to="/quizzes"
-            className="block py-2 border-b hover:text-indigo-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Quizzes
-          </Link>
-          <Link
-            to="/"
-            className="block py-2 border-b hover:text-indigo-600"
-            onClick={() => setIsOpen(false)}
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/cart"
-            className="flex items-center py-2 hover:text-indigo-600"
-            onClick={() => setIsOpen(false)}
-          >
-            <ShoppingCart className="w-5 h-5 mr-2" />
-            Cart
-            {cart?.length > 0 && (
-              <span className="ml-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
-                {cart.length}
-              </span>
-            )}
-          </Link>
+      {isOpen && (
+        <div className="md:hidden bg-white dark:bg-gray-800 px-4 pb-3 space-y-2 shadow-lg">
+          {user && (
+            <>
+              <Link
+                to="/home"
+                className="block py-2 border-b hover:text-indigo-600"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/courses"
+                className="block py-2 border-b hover:text-indigo-600"
+                onClick={() => setIsOpen(false)}
+              >
+                Courses
+              </Link>
+              <Link
+                to="/quizzes"
+                className="block py-2 border-b hover:text-indigo-600"
+                onClick={() => setIsOpen(false)}
+              >
+                Quizzes
+              </Link>
+              <Link
+                to="/cart"
+                className="flex items-center py-2 hover:text-indigo-600"
+                onClick={() => setIsOpen(false)}
+              >
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Cart
+                {cart?.length > 0 && (
+                  <span className="ml-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
+                    {cart.length}
+                  </span>
+                )}
+              </Link>
+            </>
+          )}
 
-          {/* Auth on Mobile */}
+          {/* Auth Buttons (Mobile) */}
           <div className="pt-3">
             {user ? (
               <button
